@@ -7,8 +7,18 @@ public class MobileControlsUI : MonoBehaviour
 
     private void Start()
     {
-        bool isTouchDevice = Input.touchSupported;
+        // WebGLではブラウザ(index.html)側からSetIsMobileが呼ばれるまで非表示にしておく。
+        // それ以外(エディタ実行など)はInput.touchSupportedで代用する。
+#if !UNITY_WEBGL || UNITY_EDITOR
+        controlsRoot.SetActive(Input.touchSupported);
+#else
+        controlsRoot.SetActive(false);
+#endif
+    }
 
-        controlsRoot.SetActive(isTouchDevice);
+    // index.htmlからunityInstance.SendMessageで呼び出される
+    public void SetIsMobile(string value)
+    {
+        controlsRoot.SetActive(value == "true");
     }
 }
