@@ -98,27 +98,6 @@
             unityInstance.SetFullscreen(1);
           };
 
-          if (isMobile) {
-            // スマホでは最初のタップで自動的に全画面にする
-            // (Fullscreen APIはユーザー操作がないと呼べないため)
-            var hasRequestedFullscreen = false;
-
-            var requestFullscreenOnce = () => {
-              if (hasRequestedFullscreen) {
-                return;
-              }
-
-              hasRequestedFullscreen = true;
-              unityInstance.SetFullscreen(1);
-
-              canvas.removeEventListener('touchstart', requestFullscreenOnce);
-              canvas.removeEventListener('pointerdown', requestFullscreenOnce);
-            };
-
-            canvas.addEventListener('touchstart', requestFullscreenOnce);
-            canvas.addEventListener('pointerdown', requestFullscreenOnce);
-          }
-
         }).catch((message) => {
           alert(message);
         });
