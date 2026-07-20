@@ -93,6 +93,10 @@
             unityInstance.SetFullscreen(1);
           };
 
+          // Input.touchSupportedはPCでも誤ってtrueを返すことがあるため、
+          // ここで確実なUser-Agent判定の結果をUnity側に伝える
+          unityInstance.SendMessage('Canvas', 'SetIsMobile', isMobile ? 'true' : 'false');
+
         }).catch((message) => {
           alert(message);
         });
