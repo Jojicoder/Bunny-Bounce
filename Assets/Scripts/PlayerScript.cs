@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D playerCollider;
+
+    private float horizontalInput;
+    private float mobileInput;
+
     private bool isGrounded;
 
     private void Start()
@@ -32,17 +36,38 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // 左右入力
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        // PCのキーボード入力
+        float keyboardInput = Input.GetAxisRaw("Horizontal");
 
-        // 左右移動
+        // キーボード入力がある場合はキーボードを優先
+        if (keyboardInput != 0f)
+        {
+            horizontalInput = keyboardInput;
+        }
+        else
+        {
+            horizontalInput = mobileInput;
+        }
+
+        CheckGrounded();
+
+        // PC用ジャンプ
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
+    private void FixedUpdate()
+    {
         rb.linearVelocity = new Vector2(
-            horizontal * moveSpeed,
+            horizontalInput * moveSpeed,
             rb.linearVelocity.y
         );
+    }
 
-        // Playerの中心からColliderの下端より
-        // 少し先までRayを飛ばす
+    private void CheckGrounded()
+    {
         float rayDistance =
             playerCollider.bounds.extents.y + extraGroundDistance;
 
@@ -54,24 +79,46 @@ public class PlayerMovement : MonoBehaviour
         );
 
         isGrounded = hit.collider != null;
+    }
 
-        // ジャンプ
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+    // 左ボタンを押している間
+    public void MoveLeft()
+    {
+        mobileInput = -1f;
+    }
+
+    // 右ボタンを押している間
+    public void MoveRight()
+    {
+        mobileInput = 1f;
+    }
+
+    // 左右ボタンから指を離した/外れたとき
+    public void StopMoving()
+    {
+        mobileInput = 0f;
+    }
+
+    // PC・スマホ共通ジャンプ
+    public void Jump()
+    {
+        if (!isGrounded)
         {
-            rb.linearVelocity = new Vector2(
-                rb.linearVelocity.x,
-                jumpForce
-            );
+            return;
+        }
 
-            // ジャンプ音
-            if (jumpSound != null && Camera.main != null)
-            {
-                AudioSource.PlayClipAtPoint(
-                    jumpSound,
-                    Camera.main.transform.position,
-                    jumpVolume
-                );
-            }
+        rb.linearVelocity = new Vector2(
+            rb.linearVelocity.x,
+            jumpForce
+        );
+
+        if (jumpSound != null && Camera.main != null)
+        {
+            AudioSource.PlayClipAtPoint(
+                jumpSound,
+                Camera.main.transform.position,
+                jumpVolume
+            );
         }
     }
 
