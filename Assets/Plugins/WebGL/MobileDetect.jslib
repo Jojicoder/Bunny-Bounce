@@ -1,5 +1,8 @@
 mergeInto(LibraryManager.library, {
   IsMobileBrowser: function () {
-    return (typeof window.isMobileDevice !== 'undefined' && window.isMobileDevice) ? 1 : 0;
+    var ua = navigator.userAgent || navigator.vendor || "";
+    var isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+    var isIPadOSDesktopUA = /Macintosh/i.test(ua) && navigator.maxTouchPoints > 1;
+    return (isMobileUA || isIPadOSDesktopUA) ? 1 : 0;
   }
 });
