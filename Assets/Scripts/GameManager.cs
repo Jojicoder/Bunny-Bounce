@@ -265,7 +265,15 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene("Stage2");
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 
     public void ReplayGame()

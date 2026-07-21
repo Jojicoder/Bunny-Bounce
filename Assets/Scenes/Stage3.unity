@@ -1047,7 +1047,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7682580113833559782, guid: 07b3015355cf64f008ad4f5846df974f, type: 3}
+  m_Sprite: {fileID: 7543279227538147588, guid: 5b18ae1699ead47dd9d643bba72f2958, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2106,7 +2106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5598215965012659183, guid: e929c453a579e49949c87f60bef8898e, type: 3}
+  m_Sprite: {fileID: -3948172276180444572, guid: ee44da0c8d60f49868e3aff90afbdf1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2297,7 +2297,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 01e319567d6b3477bad4a7e8876f383f, type: 3}
+  m_Resource: {fileID: 8300000, guid: fdc6234e0b1e449b9a0e46459f98a1fd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
@@ -2452,6 +2452,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 344e536fc98304757b8958313c420ef6, type: 3}
+--- !u!1 &1382461624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382461626}
+  - component: {fileID: 1382461625}
+  m_Layer: 0
+  m_Name: DiagonalButterflySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1382461625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382461624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7939cc06133e24f57afa4eeb9aaa11b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiagonalButterflySpawner
+  butterflyPrefab: {fileID: 5843248339067239495, guid: 24391bbfa36894a66ae6f4ed80641257, type: 3}
+  leftSpawnX: -8
+  rightSpawnX: 8
+  minY: -3
+  maxY: 2
+  spawnInterval: 3
+--- !u!4 &1382461626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382461624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.10912, y: 1.06198, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412635990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,3 +3299,4 @@ SceneRoots:
   - {fileID: 1029817969}
   - {fileID: 3283480566360446073}
   - {fileID: 1354218051}
+  - {fileID: 1382461626}

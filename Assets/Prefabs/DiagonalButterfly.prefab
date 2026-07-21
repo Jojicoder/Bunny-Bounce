@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4267586096067923349}
   - component: {fileID: 33426700469083775}
   - component: {fileID: 6350145207452842783}
-  - component: {fileID: 7519421818579264921}
+  - component: {fileID: 5596733669762505828}
   m_Layer: 0
-  m_Name: Cake
+  m_Name: DiagonalButterfly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d9b58389fb36432f8192f372c4e4848, type: 3}
+  m_Sprite: {fileID: 7276377664368806495, guid: bdac6707fd58b4a4daaf35a53705dc68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 21, y: 21}
+  m_Size: {x: 7.14, y: 7.3899994}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,14 +101,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5843248339067239495}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 1.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -156,7 +156,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 3
---- !u!114 &7519421818579264921
+--- !u!114 &5596733669762505828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,12 +165,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5843248339067239495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e56112a75688a407886e6652490f54a3, type: 3}
+  m_Script: {fileID: 11500000, guid: ad81f59df2f764545aa9ab8bf7764956, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Carrot
-  scoreValue: 1
-  destroyY: -8
-  getTextPrefab: {fileID: 8810190694163378518, guid: 34cfcbc0ed36346ecad49438cb3b4ecb, type: 3}
-  collectSound: {fileID: 8300000, guid: e8f8d29b4b940497bbcc0fb2d2252dbd, type: 3}
-  collectVolume: 0.2
-  spriteVariants: []
+  m_EditorClassIdentifier: Assembly-CSharp::DiagonalButterfly
+  moveSpeed: 3
+  destroyX: 10
+  destroyYTop: 6
+  destroyYBottom: -8
+  moveRight: 0
+  moveUp: 0
