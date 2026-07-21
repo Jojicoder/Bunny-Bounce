@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text gameOverText;
     public GameObject replayButton;
     public GameObject menuButton;
+    public GameObject nextStageButton;
 
     [Header("Time Limit")]
     public float timeLimit = 60f;
@@ -21,9 +22,13 @@ public class GameManager : MonoBehaviour
     [Header("Game Sounds")]
     public AudioClip gameOverSound;
     public AudioClip timeUpSound;
+    public AudioClip stageClearSound;
 
     [Range(0f, 1f)]
     public float soundVolume = 0.5f;
+
+    [Header("Stage Clear")]
+    public int scoreToClear = 10;
 
     [Header("Button Sound")]
     public AudioSource uiAudioSource;
@@ -65,6 +70,11 @@ public class GameManager : MonoBehaviour
         {
             menuButton.SetActive(false);
         }
+
+        if (nextStageButton != null)
+        {
+            nextStageButton.SetActive(false);
+        }
     }
 
     private void Update()
@@ -97,6 +107,11 @@ public class GameManager : MonoBehaviour
 
         score += amount;
         UpdateScoreText();
+
+        if (score >= scoreToClear)
+        {
+            StageClear();
+        }
     }
 
     private void UpdateScoreText()
@@ -183,6 +198,74 @@ public class GameManager : MonoBehaviour
         }
 
         Time.timeScale = 0f;
+    }
+
+    public void StageClear()
+    {
+        if (isGameOver)
+        {
+            return;
+        }
+
+        isGameOver = true;
+
+        if (bgmSource != null)
+        {
+            bgmSource.Stop();
+        }
+
+        if (stageClearSound != null && Camera.main != null)
+        {
+            AudioSource.PlayClipAtPoint(
+                stageClearSound,
+                Camera.main.transform.position,
+                soundVolume
+            );
+        }
+
+        if (gameOverText != null)
+        {
+            gameOverText.text =
+                "<color=#00FF66>STAGE CLEAR!!</color>\n\n" +
+                "<color=white>Score: " + score + "</color>";
+
+            gameOverText.gameObject.SetActive(true);
+        }
+
+        if (menuButton != null)
+        {
+            menuButton.SetActive(true);
+        }
+
+        if (nextStageButton != null)
+        {
+            nextStageButton.SetActive(true);
+        }
+
+        Time.timeScale = 0f;
+    }
+
+    public void NextStage()
+    {
+        if (isChangingScene)
+        {
+            return;
+        }
+
+        StartCoroutine(NextStageCoroutine());
+    }
+
+    private IEnumerator NextStageCoroutine()
+    {
+        isChangingScene = true;
+
+        PlayClickSound();
+
+        yield return new WaitForSecondsRealtime(sceneChangeDelay);
+
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene("Stage2");
     }
 
     public void ReplayGame()

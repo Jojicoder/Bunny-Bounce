@@ -4,6 +4,7 @@ public class Spawner : MonoBehaviour
 {
     [Header("Food Prefabs")]
     public GameObject cakePrefab;
+    public GameObject donutPrefab;
     public GameObject pizzaPrefab;
     public GameObject hamburgerPrefab;
 
@@ -42,10 +43,15 @@ public class Spawner : MonoBehaviour
 
         GameObject foodPrefab;
 
-        if (random < 0.7f)
+        if (random < 0.35f)
         {
-            // 70%
+            // 35%
             foodPrefab = cakePrefab;
+        }
+        else if (random < 0.7f)
+        {
+            // 35%
+            foodPrefab = donutPrefab;
         }
         else if (random < 0.9f)
         {

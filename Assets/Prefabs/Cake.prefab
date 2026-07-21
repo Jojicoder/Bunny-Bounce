@@ -173,3 +173,5 @@ MonoBehaviour:
   getTextPrefab: {fileID: 8810190694163378518, guid: 34cfcbc0ed36346ecad49438cb3b4ecb, type: 3}
   collectSound: {fileID: 8300000, guid: e8f8d29b4b940497bbcc0fb2d2252dbd, type: 3}
   collectVolume: 0.2
+  spriteVariants:
+  - {fileID: 0}

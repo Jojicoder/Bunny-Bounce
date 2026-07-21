@@ -39,6 +39,6 @@ public class TitleManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(sceneChangeDelay);
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Stage1");
     }
 }

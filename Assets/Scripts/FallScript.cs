@@ -13,11 +13,25 @@ public class Cake : MonoBehaviour
     [Range(0f, 1f)]
     public float collectVolume = 0.3f;
 
+    [Header("Sprite Variants")]
+    public Sprite[] spriteVariants;
+
     private GameManager gameManager;
 
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+
+        if (spriteVariants != null && spriteVariants.Length > 0)
+        {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sprite =
+                    spriteVariants[Random.Range(0, spriteVariants.Length)];
+            }
+        }
     }
 
     private void Update()
