@@ -64,6 +64,9 @@
 
       var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+      // Unity側(WebGLプラグイン経由)からシーン読み込みのたびに問い合わせられる
+      window.isMobileDevice = isMobile;
+
       if (isMobile) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
