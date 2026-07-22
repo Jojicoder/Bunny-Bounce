@@ -48,21 +48,17 @@
         updateBannerVisibility();
       }
 
-      var buildVersion = "20260722-movement-variety";
       var buildUrl = "Build";
-      function versionedBuildFile(fileName) {
-        return buildUrl + "/" + fileName + "?v=" + buildVersion;
-      }
-      var loaderUrl = versionedBuildFile("Bunny Bounce Web.loader.js");
+      var loaderUrl = buildUrl + "/Bunny Bounce Web.loader.js";
       var config = {
         arguments: [],
-        dataUrl: versionedBuildFile("Bunny Bounce Web.data"),
-        frameworkUrl: versionedBuildFile("Bunny Bounce Web.framework.js"),
-        codeUrl: versionedBuildFile("Bunny Bounce Web.wasm"),
+        dataUrl: buildUrl + "/Bunny Bounce Web.data",
+        frameworkUrl: buildUrl + "/Bunny Bounce Web.framework.js",
+        codeUrl: buildUrl + "/Bunny Bounce Web.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Bunny Bounce",
-        productVersion: buildVersion,
+        productVersion: "1.0",
         showBanner: unityShowBanner,
       };
 
@@ -89,62 +85,6 @@
 
       document.querySelector("#unity-loading-bar").style.display = "block";
 
-      function deleteIndexedDbDatabase(databaseName) {
-        return new Promise(function(resolve) {
-          if (!window.indexedDB) {
-            resolve();
-            return;
-          }
-
-          var settled = false;
-          var timeout = setTimeout(function() {
-            if (!settled) {
-              settled = true;
-              resolve();
-            }
-          }, 1500);
-
-          var request = indexedDB.deleteDatabase(databaseName);
-          request.onsuccess = request.onerror = request.onblocked = function() {
-            if (!settled) {
-              settled = true;
-              clearTimeout(timeout);
-              resolve();
-            }
-          };
-        });
-      }
-
-      function clearUnityWebCache() {
-        var cachePromise = Promise.resolve();
-
-        if (window.caches) {
-          cachePromise = caches.keys().then(function(keys) {
-            return Promise.all(keys.map(function(key) {
-              var lowerKey = key.toLowerCase();
-              if (lowerKey.indexOf("unity") !== -1 || lowerKey.indexOf("bunny") !== -1 || lowerKey.indexOf("defaultcompany") !== -1) {
-                return caches.delete(key);
-              }
-              return Promise.resolve();
-            }));
-          }).catch(function() {});
-        }
-
-        try {
-          Object.keys(localStorage).forEach(function(key) {
-            var lowerKey = key.toLowerCase();
-            if (lowerKey.indexOf("unity") !== -1 || lowerKey.indexOf("bunny") !== -1) {
-              localStorage.removeItem(key);
-            }
-          });
-        } catch (error) {}
-
-        return Promise.all([
-          cachePromise,
-          deleteIndexedDbDatabase("UnityCache")
-        ]);
-      }
-
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -161,9 +101,7 @@
         });
       };
 
-      clearUnityWebCache().finally(function() {
-        document.body.appendChild(script);
-      });
+      document.body.appendChild(script);
 
     </script>
   </body>

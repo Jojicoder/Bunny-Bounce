@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5992988126451769951, guid: cb36195abbada4d93ab681134d4ec15f, type: 3}
+  m_Sprite: {fileID: -8990961533161394152, guid: a7717400f16464d72953e0532ed61c87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,5 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Butterfly
   moveSpeed: 3
+  useCircularMovement: 0
+  circleRadius: 1.6
+  circleAngularSpeed: 2.2
   destroyX: 10
   moveRight: 0
