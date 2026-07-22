@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    private const string TitleSceneName = "Title";
+
     [Header("Button Sound")]
     public AudioSource uiAudioSource;
     public AudioClip clickSound;
@@ -17,6 +19,11 @@ public class TitleManager : MonoBehaviour
 
     private void Update()
     {
+        if (!IsTitleScene())
+        {
+            return;
+        }
+
         if (isStarting)
         {
             return;
@@ -30,6 +37,11 @@ public class TitleManager : MonoBehaviour
 
     public void PlayGame()
     {
+        if (!IsTitleScene())
+        {
+            return;
+        }
+
         if (isStarting)
         {
             return;
@@ -53,5 +65,10 @@ public class TitleManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(sceneChangeDelay);
 
         SceneManager.LoadScene("Stage1");
+    }
+
+    private bool IsTitleScene()
+    {
+        return SceneManager.GetActiveScene().name == TitleSceneName;
     }
 }

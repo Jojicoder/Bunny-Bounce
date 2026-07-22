@@ -459,7 +459,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: -2, y: -0.5, z: -2.5576313}
+  m_LocalScale: {x: -2.2, y: -0.5, z: -2.5576313}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 338450414}
@@ -1602,61 +1602,6 @@ RectTransform:
   m_AnchoredPosition: {x: 530, y: -160}
   m_SizeDelta: {x: 300, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1029817967
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1029817969}
-  - component: {fileID: 1029817968}
-  m_Layer: 0
-  m_Name: ButterflySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1029817968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029817967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 077bb6604309041beb97cef4f8e2d4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButterflySpawner
-  butterflyPrefab: {fileID: 6435419273161469718, guid: e11995cecc97e4a8484fbea403864c5f, type: 3}
-  circularButterflyPrefab: {fileID: 6435419273161469720, guid: 40a6899e35a9479e829242cd1755d1d4, type: 3}
-  leftSpawnX: -10
-  rightSpawnX: 10
-  minY: -2.8
-  maxY: 2.8
-  spawnInterval: 2.5
-  useCircularMovement: 1
-  circleRadius: 3
-  circleAngularSpeed: 2
-  alternateCircularMovement: 0
---- !u!4 &1029817969
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029817967}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1052594482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1751,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 1.091786, y: 1.0650219, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2072,11 +2017,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6831029331843597611, guid: 344e536fc98304757b8958313c420ef6, type: 3}
       propertyPath: maxX
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6831029331843597611, guid: 344e536fc98304757b8958313c420ef6, type: 3}
       propertyPath: minX
-      value: 10
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6831029331843597611, guid: 344e536fc98304757b8958313c420ef6, type: 3}
       propertyPath: maxSpawnY
@@ -2084,7 +2029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831029331843597611, guid: 344e536fc98304757b8958313c420ef6, type: 3}
       propertyPath: minSpawnY
-      value: -3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6831029331843597611, guid: 344e536fc98304757b8958313c420ef6, type: 3}
       propertyPath: spawnInterval
@@ -2139,56 +2084,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 344e536fc98304757b8958313c420ef6, type: 3}
---- !u!1 &1382461624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1382461626}
-  - component: {fileID: 1382461625}
-  m_Layer: 0
-  m_Name: DiagonalButterflySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1382461625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382461624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7939cc06133e24f57afa4eeb9aaa11b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DiagonalButterflySpawner
-  butterflyPrefab: {fileID: 5843248339067239495, guid: 24391bbfa36894a66ae6f4ed80641257, type: 3}
-  leftSpawnX: -10
-  rightSpawnX: 10
-  minY: -3
-  maxY: 0
-  spawnInterval: 3
---- !u!4 &1382461626
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382461624}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.10912, y: 1.06198, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412635990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,7 +2656,7 @@ Transform:
   m_GameObject: {fileID: 2101433965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -562.53577, y: -346.0941, z: 0}
+  m_LocalPosition: {x: -562.53577, y: -330, z: 0}
   m_LocalScale: {x: 1.1325248, y: 1.1325248, z: 1.1325248}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2775,6 +2670,63 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 8848177553969225539, guid: e16317200d9b34bda96bac63f4b82a6f, type: 3}
   m_PrefabInstance: {fileID: 3283480566360446073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1698521234703366483
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.10912
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06198
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966566119648851740, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930983644027306252, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
+      propertyPath: m_Name
+      value: DiagonalButterflySpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ae6d1f035934469c8f888d3adf60afb, type: 3}
 --- !u!1001 &3283480566360446073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2897,58 +2849,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c2d742896494ad7a1aacd06a9ff651, type: 3}
---- !u!1 &1800000001
-GameObject:
+--- !u!1001 &7870466126999860977
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1800000002}
-  - component: {fileID: 1800000003}
-  m_Layer: 0
-  m_Name: ZigzagButterflySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1800000002
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800000001}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800000003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800000001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0f7f90f5c44a32bbd8a39d64e11947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ZigzagButterflySpawner
-  zigzagButterflyPrefab: {fileID: 6435419273161469719, guid: 6a364d436adb4553b602f8173256cf53, type: 3}
-  leftSpawnX: -10
-  rightSpawnX: 10
-  minY: -2.8
-  maxY: 2.8
-  spawnInterval: 2.5
-  zigzagAmplitude: 1.5
-  zigzagFrequency: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1730400423877243335, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_Name
+      value: CircularButterflySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440760474884816357, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7730cbe582c624d3b97895b81b026899, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2963,8 +2920,7 @@ SceneRoots:
   - {fileID: 1233468731}
   - {fileID: 792694894}
   - {fileID: 1125551244}
-  - {fileID: 1029817969}
   - {fileID: 3283480566360446073}
   - {fileID: 1354218051}
-  - {fileID: 1382461626}
-  - {fileID: 1800000002}
+  - {fileID: 1698521234703366483}
+  - {fileID: 7870466126999860977}

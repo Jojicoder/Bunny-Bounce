@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ButterflySpawner : MonoBehaviour
+public class CircularButterflySpawner : MonoBehaviour
 {
     [Header("Prefab")]
-    public GameObject butterflyPrefab;
+    public GameObject circularButterflyPrefab;
 
     [Header("Spawn Area")]
     public float leftSpawnX = -8f;
@@ -14,21 +14,25 @@ public class ButterflySpawner : MonoBehaviour
     [Header("Spawn Settings")]
     public float spawnInterval = 4f;
 
+    [Header("Circular Movement")]
+    public float circleRadius = 1.6f;
+    public float circleAngularSpeed = 2.2f;
+
     private float timer;
 
     private void Start()
     {
         timer = 0f;
 
-        if (butterflyPrefab == null)
+        if (circularButterflyPrefab == null)
         {
-            Debug.LogError("Butterfly Prefab is not set");
+            Debug.LogError("Circular Butterfly Prefab is not set");
         }
     }
 
     private void Update()
     {
-        if (butterflyPrefab == null)
+        if (circularButterflyPrefab == null)
         {
             return;
         }
@@ -37,12 +41,12 @@ public class ButterflySpawner : MonoBehaviour
 
         if (timer >= spawnInterval)
         {
-            SpawnButterfly();
+            SpawnCircularButterfly();
             timer = 0f;
         }
     }
 
-    private void SpawnButterfly()
+    private void SpawnCircularButterfly()
     {
         float randomY = Random.Range(minY, maxY);
         bool spawnFromRight = Random.value > 0.5f;
@@ -51,22 +55,30 @@ public class ButterflySpawner : MonoBehaviour
 
         Vector3 spawnPosition = new Vector3(spawnX, randomY, 0f);
         GameObject butterflyObject = Instantiate(
-            butterflyPrefab,
+            circularButterflyPrefab,
             spawnPosition,
             Quaternion.identity
         );
 
-        Butterfly butterfly = butterflyObject.GetComponent<Butterfly>();
+        CircularButterfly butterfly = butterflyObject.GetComponent<CircularButterfly>();
 
         if (butterfly == null)
         {
-            Debug.LogError("Butterfly Prefab is missing Butterfly.cs");
+            Debug.LogError("Circular Butterfly Prefab is missing CircularButterfly.cs");
             Destroy(butterflyObject);
             return;
         }
 
-        butterfly.destroyX = Mathf.Max(butterfly.destroyX, MaxSpawnDistance());
-        butterfly.Initialize(shouldMoveRight);
+        butterfly.destroyX = Mathf.Max(
+            butterfly.destroyX,
+            MaxSpawnDistance() + circleRadius
+        );
+
+        butterfly.InitializeCircular(
+            shouldMoveRight,
+            circleRadius,
+            circleAngularSpeed
+        );
     }
 
     private float MaxSpawnDistance()
