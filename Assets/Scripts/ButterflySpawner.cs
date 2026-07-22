@@ -14,6 +14,11 @@ public class ButterflySpawner : MonoBehaviour
     [Header("Spawn Settings")]
     public float spawnInterval = 4f;
 
+    [Header("Circular Movement")]
+    public bool useCircularMovement = false;
+    public float circleRadius = 1.6f;
+    public float circleAngularSpeed = 2.2f;
+
     private float timer;
 
     private void Start()
@@ -87,6 +92,16 @@ public class ButterflySpawner : MonoBehaviour
         }
 
         // 右から出たら左へ、左から出たら右へ進む
-        butterfly.moveRight = !spawnFromRight;
+        butterfly.destroyX = Mathf.Max(
+            butterfly.destroyX,
+            Mathf.Max(Mathf.Abs(leftSpawnX), Mathf.Abs(rightSpawnX)) + circleRadius + 1f
+        );
+
+        butterfly.Initialize(
+            !spawnFromRight,
+            useCircularMovement,
+            circleRadius,
+            circleAngularSpeed
+        );
     }
 }

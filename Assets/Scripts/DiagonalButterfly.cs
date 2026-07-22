@@ -9,6 +9,7 @@ public class DiagonalButterfly : MonoBehaviour
     public float destroyX = 10f;
     public float destroyYTop = 6f;
     public float destroyYBottom = -8f;
+    public float destroyMargin = 1.5f;
 
     [HideInInspector]
     public bool moveRight;
@@ -18,6 +19,7 @@ public class DiagonalButterfly : MonoBehaviour
 
     private GameManager gameManager;
     private Vector2 direction;
+    private bool hasEnteredScreen;
 
     private void Start()
     {
@@ -68,15 +70,62 @@ public class DiagonalButterfly : MonoBehaviour
 
     private void CheckOutsideScreen()
     {
-        if (moveRight && transform.position.x > destroyX)
+        float checkX = transform.position.x;
+
+        if (TryGetCameraHorizontalBounds(out float leftBound, out float rightBound))
         {
-            Destroy(gameObject);
+            float safeDestroyMargin = Mathf.Max(destroyMargin, 1.5f);
+            float leftDestroyBound = leftBound - safeDestroyMargin;
+            float rightDestroyBound = rightBound + safeDestroyMargin;
+
+            if (!hasEnteredScreen)
+            {
+                hasEnteredScreen =
+                    checkX >= leftDestroyBound &&
+                    checkX <= rightDestroyBound;
+
+                if (!hasEnteredScreen)
+                {
+                    CheckOutsideVerticalBounds();
+                    return;
+                }
+            }
+
+            if (moveRight && checkX > rightDestroyBound)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            if (!moveRight && checkX < leftDestroyBound)
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
-        else if (!moveRight && transform.position.x < -destroyX)
+        else
         {
-            Destroy(gameObject);
+            float safeDestroyX = Mathf.Max(Mathf.Abs(destroyX), 10f);
+
+            if (moveRight && checkX > safeDestroyX)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            if (!moveRight && checkX < -safeDestroyX)
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
-        else if (transform.position.y > destroyYTop)
+
+        CheckOutsideVerticalBounds();
+    }
+
+    private void CheckOutsideVerticalBounds()
+    {
+        if (transform.position.y > destroyYTop)
         {
             Destroy(gameObject);
         }
@@ -84,6 +133,30 @@ public class DiagonalButterfly : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private bool TryGetCameraHorizontalBounds(out float leftBound, out float rightBound)
+    {
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera == null)
+        {
+            leftBound = 0f;
+            rightBound = 0f;
+            return false;
+        }
+
+        float cameraDistance = Mathf.Abs(mainCamera.transform.position.z - transform.position.z);
+        Vector3 leftWorld = mainCamera.ViewportToWorldPoint(
+            new Vector3(0f, 0.5f, cameraDistance)
+        );
+        Vector3 rightWorld = mainCamera.ViewportToWorldPoint(
+            new Vector3(1f, 0.5f, cameraDistance)
+        );
+
+        leftBound = Mathf.Min(leftWorld.x, rightWorld.x);
+        rightBound = Mathf.Max(leftWorld.x, rightWorld.x);
+        return true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
