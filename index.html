@@ -48,13 +48,14 @@
         updateBannerVisibility();
       }
 
+      var buildVersion = "20260722-butterfly-movement";
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Bunny Bounce Web.loader.js";
+      var loaderUrl = buildUrl + "/Bunny Bounce Web.loader.js?v=" + buildVersion;
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Bunny Bounce Web.data",
-        frameworkUrl: buildUrl + "/Bunny Bounce Web.framework.js",
-        codeUrl: buildUrl + "/Bunny Bounce Web.wasm",
+        dataUrl: buildUrl + "/Bunny Bounce Web.data?v=" + buildVersion,
+        frameworkUrl: buildUrl + "/Bunny Bounce Web.framework.js?v=" + buildVersion,
+        codeUrl: buildUrl + "/Bunny Bounce Web.wasm?v=" + buildVersion,
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Bunny Bounce",
